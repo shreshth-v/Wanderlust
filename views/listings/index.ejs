@@ -1,0 +1,81 @@
+<% layout("/layouts/boilerplate") -%>
+<link rel="stylesheet" href="/css/filters.css">
+<body>
+    <div class="options-bar row">
+        <div id="filters" class="col-9">
+            <div class="filter" data-category="Trending">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+            </div>
+            <div class="filter" data-category="Rooms">
+                <i class="fa-solid fa-bed"></i>
+                <p>Rooms</p>
+            </div>
+            <div class="filter" data-category="Iconic%20Cities">
+                <i class="fa-solid fa-city"></i>
+                <p>Iconic Cities</p>
+            </div>
+            <div class="filter" data-category="Mountains">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Mountains</p>
+            </div>
+            <div class="filter" data-category="Castles">
+                <i class="fa-brands fa-fort-awesome"></i>
+                <p>Castles</p>
+            </div>
+            <div class="filter" data-category="Pools">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Pools</p>
+            </div>
+            <div class="filter" data-category="Camping">
+                <i class="fa-solid fa-tent"></i>
+                <p>Camping</p>
+            </div>
+            <div class="filter" data-category="Farms">
+                <i class="fa-solid fa-cow"></i>
+                <p>Farms</p>
+            </div>
+            <div class="filter" data-category="Artic">
+                <i class="fa-regular fa-snowflake"></i>
+                <p>Artic</p>
+            </div>
+            <div class="filter" data-category="Boats">
+                <i class="fa-solid fa-sailboat"></i>
+                <p>Boats</p>
+            </div>
+        </div>
+        <div id="tax-switch" class="col-3 d-flex justify-content-center align-items-center">
+            <div class="form-check form-switch form-check-reverse border rounded py-2 px-3" id="tax-box">
+                <div class="d-flex align-items-center">
+                    <input class="form-check-input me-2" type="checkbox" id="flexSwitchCheckReverse">
+                    <label class="form-check-label small" for="flexSwitchCheckReverse">Display total after taxes</label>
+                </div>
+            </div>
+        </div>
+        
+    </div>    
+    
+    <div class="row">
+        <% for(listing of allListings) {%>
+            <div class="card listing-card col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
+                    <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listing.title %></b>
+                        <br>
+                        <small>
+                            &#x20B9; <%= listing.price.toLocaleString("en-IN") %>
+                            <i class="tax-amount" style="display: none;"> +18% GST = &#x20B9; <%= (listing.price + (listing.price * 18)/100).toLocaleString("en-IN") %></i>
+                        </small>
+                    </p>
+                    </div>
+                </a>
+            </div>
+        <% } %>
+    </div>
+</body>
+
+
+<script src="/js/taxes.js"></script>
+<script src="/js/categoryFilter.js"></script>

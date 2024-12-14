@@ -1,0 +1,106 @@
+#filters {
+    display: flex;
+    gap: 1rem; /* Space between icons */
+    flex-wrap: wrap; /* Allow wrapping of icons */
+    margin: 1rem 0; /* Add margin to top and bottom */
+    height: 3.5rem;
+}
+
+.filter {
+    text-align: center;
+    flex: 1 0 auto; /* Flexible sizing */
+    min-width: 50px; /* Adjusted size */
+    max-width: 80px; /* Controlled max size */
+    opacity: 0.7; /* Default opacity */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+}
+
+.filter:hover {
+    opacity: 1; /* Full opacity on hover */
+    transform: scale(1.1); /* Slight zoom-in effect */
+    cursor: pointer;
+}
+
+.filter i {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px; /* Icon size */
+}
+
+.filter p {
+    font-size: 12px; /* Label size */
+    margin: 0;
+}
+
+.filter.active {
+    background-color: #e0e0e0; /* Light gray background for the active filter */
+    color: #333; /* Dark text for contrast */
+    transform: scale(1.05); /* Slightly increase the size of the filter */
+    border-radius: 12px; /* Rounded edges */
+    padding: 0.2rem 0; /* Add space inside the box (adjust as needed) */
+    transition: background-color 0.3s, transform 0.3s, border-radius 0.3s; /* Smooth transition */
+}
+
+.filter.active i {
+    transition: transform 0.3s ease-in-out; 
+}
+
+
+/* Media Query for Smaller Screens */
+@media (max-width: 992px) {
+    #filters {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping of items */
+        gap: 1rem; /* Space between icons */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: hidden;
+        /* -webkit-overflow-scrolling: touch;  */
+        padding: 0 1rem; /* Add padding on left and right */
+        width: 100%; /* Ensure full width of the container */
+        margin-bottom: 1rem; /* Add space below to prevent overlap with scrollbar */
+    }
+
+    /* Custom Scrollbar for Webkit Browsers (Chrome, Safari, Edge) */
+    #filters::-webkit-scrollbar {
+        height: 6px; /* Set the height for the horizontal scrollbar */
+    }
+
+    #filters::-webkit-scrollbar-thumb {
+        background-color: #ccc; /* Scrollbar color */
+        border-radius: 10px; /* Rounded corners for thumb */
+    }
+
+    #filters::-webkit-scrollbar-track {
+        background-color: #f9f9f9; /* Scrollbar track background */
+    }
+
+    .filter {
+        flex: 0 0 auto; /* Prevent shrinking or expanding */
+        text-align: center;
+        min-width: 80px; /* Set a minimum width for each filter */
+        max-width: 100px; /* Set a maximum width */
+    }
+
+    .filter i {
+        font-size: 20px; /* Icon size */
+    }
+
+    .filter p {
+        font-size: 12px; /* Label size */
+    }
+
+    #tax-switch {
+        width: 100%; /* Full width */
+        margin-top: 0.5rem; /* Add space above */
+        margin-bottom: 0.75rem; 
+        padding: 0 1rem; /* Padding for better spacing */
+        display: flex;
+        justify-content: center; /* Center the switch horizontally */
+    }
+
+    #tax-box {
+        width: auto; /* Adjust to content size */
+        padding: 0.5rem 1rem; /* Adjust padding for smaller screens */
+    }
+}
+
